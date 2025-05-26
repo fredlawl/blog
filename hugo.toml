@@ -1,0 +1,29 @@
+baseURL = 'https://fredlawl.com/'
+languageCode = 'en-us'
+title = 'Tales of an Uninteresting Dev'
+buildDrafts = true
+enableRobotsTXT = true
+
+[params]
+noSearch = true
+
+[[menu.main]]
+name = '<u>H</u>ome'
+url = '/'
+weight = 1
+
+[markup]
+defaultMarkdownHandler = 'goldmark'
+
+[markup.highlight]
+lineNos = true
+codeFences = true
+lineNumbersInTable = false
+
+[outputs]
+home = [ "html", "rss", "json" ]
+page = [ "html" ]
+
+[module]
+  [[module.imports]]
+    path = "github.com/barklan/hugo-dead-simple"

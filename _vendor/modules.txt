@@ -1,0 +1,1 @@
+# github.com/barklan/hugo-dead-simple v1.76.5
