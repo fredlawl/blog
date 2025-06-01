@@ -289,6 +289,30 @@ saved me!
 
 ➜  iso sudo cp -r images/efi-part/* testiso/
 
+➜  iso sudo mkdir -p testiso/boot/grub
+
+➜  iso sudo qemu-img create testiso/boot/grub/efi.img 8M
+Formatting 'testiso/boot/grub/efi.img', fmt=raw size=8388608
+
+➜  iso sudo mkfs.vfat testiso/boot/grub/efi.img
+mkfs.fat 4.2 (2021-01-31)
+
+➜  iso mkdir efi-img
+➜  iso sudo mount testiso/boot/grub/efi.img ./efi-img
+➜  iso sudo mkdir -p ./efi-img/efi/boot
+➜  iso sudo grub2-mkimage \
+    -C xz \
+    -O x86_64-efi \
+    -p /boot/grub \
+    -o ./efi-img/efi/boot/bootx64.efi \
+    boot linux search normal configfile \
+    part_gpt btrfs ext2 fat iso9660 loopback \
+    test keystatus gfxmenu regexp probe \
+    efi_gop efi_uga all_video gfxterm font \
+    echo read ls cat png jpeg halt reboot
+
+➜  iso sudo umount ./efi-img
+
 ➜  iso cat testiso/EFI/BOOT/grub.cfg
 set default="0"
 set timeout="5"
@@ -302,6 +326,7 @@ menuentry "Buildroot" {
     -r -V "TEST" \
     -J -joliet-long \
     -no-emul-boot \
+    -e boot/grub/efi.img \
     -o testiso.iso \
     testiso
 
