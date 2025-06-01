@@ -1,6 +1,6 @@
 +++
 date = '2025-05-25T14:08:02-05:00'
-draft = true
+draft = false
 title = 'journalctl BTRFS csum corruption'
 toc = true
 categories = ["debuging"]
