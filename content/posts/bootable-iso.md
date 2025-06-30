@@ -187,6 +187,8 @@ Then format & populate the partitions:
 
 ```sh
 ➜  iso mkdir -p boot efi fs
+➜  iso losetup --show -P -f rootfs.img
+/dev/loop0
 ➜  iso sudo mkfs.ext4 /dev/loop0p1
 mke2fs 1.47.2 (1-Jan-2025)
 Discarding device blocks: done
