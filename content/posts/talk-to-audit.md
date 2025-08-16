@@ -182,7 +182,7 @@ strace output deals with handling messages coming back from the socket.
 
 _talk-to-audit.py_
 
-```python3
+```python
 import socket
 import struct
 import os
@@ -228,4 +228,4 @@ journalctl -b0 -a -g "hello, from python" --no-pager _TRANSPORT=audit
 Aug 10 18:02:43 olympus audit[53387]: USER pid=53387 uid=0 auid=1000 ses=3 subj=unconfined_u:unconfined_r:unconfined_t:s0-s0:c0.c1023 msg='text="hello, from python'
 ```
 
-And that's that to get send messages into audit!
+And that's that to send messages into audit!
